@@ -11,7 +11,8 @@ import MapboxMaps
 
 class MainViewComponents: UIView {
     
-    weak var delegate: ShowMapStyleModalDelegate? = nil
+    weak var showMapStyleModalDelegate: ShowMapStyleModalDelegate? = nil
+    weak var setCameraCenterDelegate : SetCameraCenterDelegate? = nil
         
     // 初期化
     init() {
@@ -21,6 +22,17 @@ class MainViewComponents: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    /**
+     背面に隠れたViewを
+     */
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let view = super.hitTest(point, with: event)
+        
+        if view == self {
+            return nil
+        }
+        return view
     }
     
     // マップ選択ボタン
@@ -44,7 +56,6 @@ class MainViewComponents: UIView {
         config.buttonSize = .large
         config.image = UIImage(systemName: "location.fill", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
         myLocationButton.configuration = config
-        
         return myLocationButton
     }()
     
@@ -63,6 +74,7 @@ class MainViewComponents: UIView {
      MyLocationボタン設定
      */
     private func setupMyLocationButton() {
+        myLocationButton.addTarget(self, action: #selector(setUserLocation), for: .touchUpInside)
         addSubview(myLocationButton)
         myLocationButton.translatesAutoresizingMaskIntoConstraints = false
         myLocationButton.topAnchor.constraint(equalTo: topAnchor, constant: 120.0).isActive = true
@@ -71,8 +83,11 @@ class MainViewComponents: UIView {
     
     @objc func showMapSelectView() {
         print("showMapSelectView")
-        self.delegate?.didTapped(didTapped: true)
-        //presentPanModal(mapSelectViewController)
+        self.showMapStyleModalDelegate?.didTapped(didTapped: true)
+    }
+    
+    @objc func setUserLocation() {
+        self.setCameraCenterDelegate?.setUserLocation()
     }
     
     private func setupView() {

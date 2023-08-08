@@ -9,7 +9,7 @@ import UIKit
 import PanModal
 import MapboxMaps
 
-class MapSelectViewController: UIViewController, PanModalPresentable, SelectMapTypeDelegate {
+class MapSelectViewController: UIViewController, SelectMapTypeDelegate {
     
     weak var delegate: MapTypeChangeDelegate? = nil
     
@@ -42,7 +42,9 @@ class MapSelectViewController: UIViewController, PanModalPresentable, SelectMapT
         mapSelectView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         mapSelectView.heightAnchor.constraint(equalToConstant: mapSelectViewHeight).isActive = true
     }
+}
 
+extension MapSelectViewController: PanModalPresentable {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -59,6 +61,5 @@ class MapSelectViewController: UIViewController, PanModalPresentable, SelectMapT
     var anchorModalToLongForm: Bool {
         return false
     }
-    
 }
 

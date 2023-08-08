@@ -5,14 +5,13 @@
 //  Created by 滝野駿 on 2023/04/05.
 //
 
-import UIKit
+import SwiftUI
 import MapboxMaps
 
 public class ViewController: UIViewController {
     
     private var mapView: MapView!
     private var cameraLocationConsumer: CameraLocationConsumer!
-    private lazy var toggleBearingImageButton = UIButton(frame: .zero)
 
     // マップスタイル
     private var style: StyleURI = .satelliteStreets {
@@ -22,9 +21,9 @@ public class ViewController: UIViewController {
         }
     }
     
-    private var showsBearingImage: Bool = false {
+    var mapStyle: StyleURI = .satelliteStreets {
         didSet {
-            syncPuckAndButton()
+            mapView.mapboxMap.style.uri = mapStyle
         }
     }
     
@@ -48,28 +47,31 @@ public class ViewController: UIViewController {
                                               styleURI: style)
         mapView = MapView(frame: view.bounds, mapInitOptions:  myMapInitOptions)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        
+        // delegateを設定する
         setupDelegate()
-        setupMainViewComponents()
-        
         self.view.addSubview(mapView)
-
-        // Setup and create button for toggling show bearing image
-        setupToggleShowBearingImageButton()
+        setupMainViewComponents()
         
         cameraLocationConsumer = CameraLocationConsumer(mapView: mapView)
         
-        // Add user position icon to the map with location indicator layer
-        mapView.location.options.puckType = .puck2D()
-        
+        // 現在地を示すアイコンの設定
+        mapView.location.options.puckType = .puck2D(.makeDefault(showBearing: true))
+        mapView.location.options.puckBearingSource = .heading
+
         // デリゲートがマップ イベントに関する情報を受信できるようにします
-        mapView.mapboxMap.onNext(.mapLoaded) { [weak self] _ in
+        mapView.mapboxMap.onNext(event: .mapLoaded) { [weak self] _ in
             guard let self = self else { return }
-            // ロケーションコンシューマをマップに登録します
-            // ロケーションマネージャはコンシューマへの弱参照を保持していることに注意してください。これは保持する必要があります
-            self.mapView.location.addLocationConsumer(newConsumer: self.cameraLocationConsumer)
+            if let currentLocation = self.mapView.location.latestLocation {
+                let cameraOptions = CameraOptions(center: currentLocation.coordinate, zoom: 15)
+                self.mapView.mapboxMap.setCamera(to: cameraOptions)
+                //self.mapView.camera.fly(to: cameraOptions, duration: 2.0)
+            }
+            //self.mapView.location.addLocationConsumer(newConsumer: self.cameraLocationConsumer)
         }
+    }
+    
+    override public func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     /**
@@ -77,56 +79,20 @@ public class ViewController: UIViewController {
      */
     private func setupDelegate() {
         mapSelectViewController.delegate = self
-        mainViewComponents.delegate = self
+        mainViewComponents.showMapStyleModalDelegate = self
+        mainViewComponents.setCameraCenterDelegate = self
     }
     
+    /**
+     Map上のコンポーネントをViewに追加
+     */
     private func setupMainViewComponents() {
         self.view.addSubview(mainViewComponents)
         mainViewComponents.translatesAutoresizingMaskIntoConstraints = false
         mainViewComponents.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        //mainViewComponents.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        mainViewComponents.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         mainViewComponents.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         mainViewComponents.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-    }
-    
-    override public func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    @objc func showHideBearingImage() {
-        showsBearingImage.toggle()
-    }
-    
-    func syncPuckAndButton() {
-        // Update puck config
-        let configration = Puck2DConfiguration()
-        
-        mapView.location.options.puckType = .puck2D()
-        
-        // Update button title
-        let title: String = showsBearingImage ? "Hide bearing Image" : "Show bearing image"
-        toggleBearingImageButton.setTitle(title, for: .normal)
-    
-    }
-    
-    private func setupToggleShowBearingImageButton() {
-        // Styling
-        toggleBearingImageButton.backgroundColor = .systemBlue
-        toggleBearingImageButton.addTarget(self, action: #selector(showHideBearingImage), for: .touchUpInside)
-        toggleBearingImageButton.setTitleColor(.white, for: .normal)
-        toggleBearingImageButton.layer.cornerRadius = 4
-        toggleBearingImageButton.clipsToBounds = true
-        toggleBearingImageButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
-        
-        toggleBearingImageButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(toggleBearingImageButton)
-        
-        // Constraints
-        toggleBearingImageButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20.0).isActive = true
-        toggleBearingImageButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20.0).isActive = true
-        toggleBearingImageButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -70.0).isActive = true
-        
-        syncPuckAndButton()
     }
 }
 
@@ -149,6 +115,14 @@ extension ViewController : ShowMapStyleModalDelegate {
     }
 }
 
+extension ViewController : SetCameraCenterDelegate {
+    func setUserLocation() {
+        if let currentLocation = self.mapView.location.latestLocation {
+            let cameraOptions = CameraOptions(center: currentLocation.coordinate, zoom: 15)
+            self.mapView.camera.fly(to: cameraOptions, duration: 2.0)
+        }
+    }
+}
 
 /**
  LocationConsumerに準拠したクラスを作成し、locationUpdate受信時にカメラのcenterCoordinateを更新する
@@ -161,7 +135,7 @@ public class CameraLocationConsumer: LocationConsumer {
     }
     
     public func locationUpdate(newLocation: Location) {
-        var cameraOptions = CameraOptions(center: newLocation.coordinate, zoom: 15)
+        let cameraOptions = CameraOptions(center: newLocation.coordinate, zoom: 15)
         mapView?.camera.ease(to: cameraOptions, duration: 1.3)
     }
 }

@@ -52,8 +52,8 @@ class MapSelectView: UIView {
             }
         }
         // 以下がenumで定義したcase
-        case light
         case satelliteStreets
+        case light
         case outdoors
     }
     

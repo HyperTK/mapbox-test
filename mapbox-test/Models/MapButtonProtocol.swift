@@ -12,3 +12,7 @@
 protocol ShowMapStyleModalDelegate : AnyObject {
     func didTapped(didTapped: Bool)
 }
+
+protocol SetCameraCenterDelegate : AnyObject {
+    func setUserLocation()
+}
