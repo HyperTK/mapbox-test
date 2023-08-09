@@ -80,7 +80,7 @@ struct TabMapView: View {
                         })
                         .pickerStyle(.segmented)
                         .padding()
-                        .presentationDetents([.medium])
+                        .presentationDetents([.medium, .large])
                         Text("[\(selectedValue)]")
                         Spacer()
                     })
