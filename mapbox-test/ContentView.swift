@@ -31,6 +31,12 @@ struct ContentView: View {
                     Image(systemName: "book.closed.fill")
                     Text("LOG")
                 }.tag(2)
+            // マイページ
+            TabLogView()
+                .tabItem(){
+                    Image(systemName: "person.crop.circle.fill")
+                    Text("MYPAGE")
+                }.tag(3)
         }
     }
 }

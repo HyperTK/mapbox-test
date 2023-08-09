@@ -14,12 +14,12 @@ public class ViewController: UIViewController {
     private var cameraLocationConsumer: CameraLocationConsumer!
 
     // マップスタイル
-    private var style: StyleURI = .satelliteStreets {
-        // プロパティの監視
-        didSet {
-            mapView.mapboxMap.style.uri = style
-        }
-    }
+//    private var style: StyleURI = .satelliteStreets {
+//        // プロパティの監視
+//        didSet {
+//            mapView.mapboxMap.style.uri = style
+//        }
+//    }
     
     var mapStyle: StyleURI = .satelliteStreets {
         didSet {
@@ -28,15 +28,15 @@ public class ViewController: UIViewController {
     }
     
     // マップスタイル選択View
-    let mapSelectViewController: MapSelectViewController = {
-        let mapSelectViewController = MapSelectViewController()
-        return mapSelectViewController
-    }()
+//    let mapSelectViewController: MapSelectViewController = {
+//        let mapSelectViewController = MapSelectViewController()
+//        return mapSelectViewController
+//    }()
     // マップ上のコンポーネント
-    let mainViewComponents: MainViewComponents = {
-        let mainViewComponents = MainViewComponents()
-        return mainViewComponents
-    }()
+//    let mainViewComponents: MainViewComponents = {
+//        let mainViewComponents = MainViewComponents()
+//        return mainViewComponents
+//    }()
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -44,13 +44,13 @@ public class ViewController: UIViewController {
         let accessToken = Bundle.main.object(forInfoDictionaryKey: "MBXAccessToken") as! String
         let myResourceOptions = ResourceOptions(accessToken: accessToken)
         let myMapInitOptions = MapInitOptions(resourceOptions: myResourceOptions,
-                                              styleURI: style)
+                                              styleURI: mapStyle)
         mapView = MapView(frame: view.bounds, mapInitOptions:  myMapInitOptions)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         // delegateを設定する
-        setupDelegate()
+        //setupDelegate()
         self.view.addSubview(mapView)
-        setupMainViewComponents()
+        //setupMainViewComponents()
         
         cameraLocationConsumer = CameraLocationConsumer(mapView: mapView)
         
@@ -74,55 +74,66 @@ public class ViewController: UIViewController {
         super.viewDidAppear(animated)
     }
     
-    /**
-     delegate設定
-     */
-    private func setupDelegate() {
-        mapSelectViewController.delegate = self
-        mainViewComponents.showMapStyleModalDelegate = self
-        mainViewComponents.setCameraCenterDelegate = self
-    }
-    
-    /**
-     Map上のコンポーネントをViewに追加
-     */
-    private func setupMainViewComponents() {
-        self.view.addSubview(mainViewComponents)
-        mainViewComponents.translatesAutoresizingMaskIntoConstraints = false
-        mainViewComponents.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        mainViewComponents.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        mainViewComponents.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        mainViewComponents.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-    }
-}
-
-/**
- マップスタイル変更を処理するdelegate
- */
-extension ViewController: MapTypeChangeDelegate {
-    func didChangedMapType(type: StyleURI) {
-        style = type
-        print("didChangedMapType:\(type)")
-    }
-}
-
-/**
- マップ制御に関するdelegate
- */
-extension ViewController : ShowMapStyleModalDelegate {
-    func didTapped(didTapped: Bool) {
-        presentPanModal(mapSelectViewController)
-    }
-}
-
-extension ViewController : SetCameraCenterDelegate {
     func setUserLocation() {
+        // UnwrapしてcurrentLocationへ代入する
+        // nilではない場合のみifの次列を実行する
         if let currentLocation = self.mapView.location.latestLocation {
             let cameraOptions = CameraOptions(center: currentLocation.coordinate, zoom: 15)
             self.mapView.camera.fly(to: cameraOptions, duration: 2.0)
         }
     }
+    
+    /**
+     delegate設定
+     */
+//    private func setupDelegate() {
+//        mapSelectViewController.delegate = self
+//        mainViewComponents.showMapStyleModalDelegate = self
+//        mainViewComponents.setCameraCenterDelegate = self
+//    }
+    
+    /**
+     Map上のコンポーネントをViewに追加
+     */
+//    private func setupMainViewComponents() {
+//        self.view.addSubview(mainViewComponents)
+//        mainViewComponents.translatesAutoresizingMaskIntoConstraints = false
+//        mainViewComponents.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//        mainViewComponents.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//        mainViewComponents.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+//        mainViewComponents.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+//    }
 }
+
+/**
+ マップスタイル変更を処理するdelegate
+ */
+//extension ViewController: MapTypeChangeDelegate {
+//    func didChangedMapType(type: StyleURI) {
+//        style = type
+//        print("didChangedMapType:\(type)")
+//    }
+//}
+
+/**
+ マップ制御に関するdelegate
+ */
+//extension ViewController : ShowMapStyleModalDelegate {
+//    func didTapped(didTapped: Bool) {
+//        presentPanModal(mapSelectViewController)
+//    }
+//}
+
+//extension ViewController : SetCameraCenterDelegate {
+//    func setUserLocation() {
+//        // UnwrapしてcurrentLocationへ代入する
+//        // nilではない場合のみifの次列を実行する
+//        if let currentLocation = self.mapView.location.latestLocation {
+//            let cameraOptions = CameraOptions(center: currentLocation.coordinate, zoom: 15)
+//            self.mapView.camera.fly(to: cameraOptions, duration: 2.0)
+//        }
+//    }
+//}
 
 /**
  LocationConsumerに準拠したクラスを作成し、locationUpdate受信時にカメラのcenterCoordinateを更新する

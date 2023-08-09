@@ -17,25 +17,15 @@
 		7417E2BF2A6F91CC0080E0D9 /* TabTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7417E2BE2A6F91CC0080E0D9 /* TabTeamView.swift */; };
 		7417E2C12A6F96800080E0D9 /* TabLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7417E2C02A6F967F0080E0D9 /* TabLogView.swift */; };
 		7417E2C42A6FA6A70080E0D9 /* AppControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7417E2C32A6FA6A70080E0D9 /* AppControl.swift */; };
-		742A713E29F019770074FCAE /* MainViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A713D29F019770074FCAE /* MainViewComponents.swift */; };
-		742A714029F0BB850074FCAE /* MapButtonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A713F29F0BB850074FCAE /* MapButtonProtocol.swift */; };
 		747E91172A81F10A0022FAA9 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E91162A81F10A0022FAA9 /* MapModel.swift */; };
-		74906C1C29F6751800953D57 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74906C1B29F6751800953D57 /* BasicViewController.swift */; };
-		74954A0C29F2AC4000805E22 /* ModalViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74954A0B29F2AC4000805E22 /* ModalViewWrapper.swift */; };
-		74954A0E29F2AE0100805E22 /* MapSelectModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74954A0D29F2AE0100805E22 /* MapSelectModal.swift */; };
-		74969D4029DDA8E100C7C8CB /* ExampleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74969D3F29DDA8E100C7C8CB /* ExampleProtocol.swift */; };
 		74B71FA729F27DD000691BE0 /* TabMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B71FA629F27DD000691BE0 /* TabMapView.swift */; };
 		74B71FAA29F280D800691BE0 /* ResizableSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 74B71FA929F280D800691BE0 /* ResizableSheet */; };
-		74DBEEC529E6E7E700BC968B /* MapSelectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DBEEC429E6E7E700BC968B /* MapSelectProtocol.swift */; };
+		74C6E67D2A831265008A6218 /* TabMypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C6E67C2A831265008A6218 /* TabMypageView.swift */; };
 		74DFE37929DC232C00DE6AAA /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 74DFE37829DC232C00DE6AAA /* MapboxMaps */; };
 		74E692A429E40A4E00479126 /* blueprint_style.json in Resources */ = {isa = PBXBuildFile; fileRef = 74E692A329E40A4E00479126 /* blueprint_style.json */; };
 		74E692A729E4DCED00479126 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 74E692A629E4DCED00479126 /* PanModal */; };
 		74E9D9E929DCF2C2006706F8 /* MapViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9D9E829DCF2C2006706F8 /* MapViewWrapper.swift */; };
 		74E9D9EB29DCF313006706F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9D9EA29DCF313006706F8 /* ViewController.swift */; };
-		74F141A929ED6DF9003F8C79 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F141A829ED6DF9003F8C79 /* AlertView.swift */; };
-		74F141AB29ED700D003F8C79 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F141AA29ED700D003F8C79 /* AlertViewController.swift */; };
-		74F141AE29ED72FE003F8C79 /* MapSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F141AD29ED72FE003F8C79 /* MapSelectView.swift */; };
-		74F6BDFF29E58F9600A86EC5 /* MapSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F6BDFE29E58F9600A86EC5 /* MapSelectViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,22 +74,12 @@
 		7417E2BE2A6F91CC0080E0D9 /* TabTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTeamView.swift; sourceTree = "<group>"; };
 		7417E2C02A6F967F0080E0D9 /* TabLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLogView.swift; sourceTree = "<group>"; };
 		7417E2C32A6FA6A70080E0D9 /* AppControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppControl.swift; sourceTree = "<group>"; };
-		742A713D29F019770074FCAE /* MainViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewComponents.swift; sourceTree = "<group>"; };
-		742A713F29F0BB850074FCAE /* MapButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButtonProtocol.swift; sourceTree = "<group>"; };
 		747E91162A81F10A0022FAA9 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
-		74906C1B29F6751800953D57 /* BasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
-		74954A0B29F2AC4000805E22 /* ModalViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewWrapper.swift; sourceTree = "<group>"; };
-		74954A0D29F2AE0100805E22 /* MapSelectModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSelectModal.swift; sourceTree = "<group>"; };
-		74969D3F29DDA8E100C7C8CB /* ExampleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleProtocol.swift; sourceTree = "<group>"; };
 		74B71FA629F27DD000691BE0 /* TabMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMapView.swift; sourceTree = "<group>"; };
-		74DBEEC429E6E7E700BC968B /* MapSelectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSelectProtocol.swift; sourceTree = "<group>"; };
+		74C6E67C2A831265008A6218 /* TabMypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMypageView.swift; sourceTree = "<group>"; };
 		74E692A329E40A4E00479126 /* blueprint_style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blueprint_style.json; sourceTree = "<group>"; };
 		74E9D9E829DCF2C2006706F8 /* MapViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewWrapper.swift; sourceTree = "<group>"; };
 		74E9D9EA29DCF313006706F8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		74F141A829ED6DF9003F8C79 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
-		74F141AA29ED700D003F8C79 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
-		74F141AD29ED72FE003F8C79 /* MapSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSelectView.swift; sourceTree = "<group>"; };
-		74F6BDFE29E58F9600A86EC5 /* MapSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSelectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,10 +136,8 @@
 				7417E2C22A6FA6860080E0D9 /* Common */,
 				74B71FA329F27BCA00691BE0 /* TabItem */,
 				742A713C29F019580074FCAE /* MainView */,
-				74F141A729ED6D9A003F8C79 /* Alert */,
 				74E692A229E409FE00479126 /* Sample Data */,
 				74969D3E29DDA8CB00C7C8CB /* Models */,
-				74F141AC29ED724A003F8C79 /* MapSelect */,
 				74062B6429DC145E00546886 /* Info.plist */,
 				74062B3929DC0BED00546886 /* mapbox_testApp.swift */,
 				74062B3B29DC0BED00546886 /* ContentView.swift */,
@@ -208,7 +186,6 @@
 			children = (
 				74E9D9E829DCF2C2006706F8 /* MapViewWrapper.swift */,
 				74E9D9EA29DCF313006706F8 /* ViewController.swift */,
-				742A713D29F019770074FCAE /* MainViewComponents.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -216,9 +193,6 @@
 		74969D3E29DDA8CB00C7C8CB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				74969D3F29DDA8E100C7C8CB /* ExampleProtocol.swift */,
-				74DBEEC429E6E7E700BC968B /* MapSelectProtocol.swift */,
-				742A713F29F0BB850074FCAE /* MapButtonProtocol.swift */,
 				747E91162A81F10A0022FAA9 /* MapModel.swift */,
 			);
 			path = Models;
@@ -230,6 +204,7 @@
 				74B71FA629F27DD000691BE0 /* TabMapView.swift */,
 				7417E2BE2A6F91CC0080E0D9 /* TabTeamView.swift */,
 				7417E2C02A6F967F0080E0D9 /* TabLogView.swift */,
+				74C6E67C2A831265008A6218 /* TabMypageView.swift */,
 			);
 			path = TabItem;
 			sourceTree = "<group>";
@@ -240,27 +215,6 @@
 				74E692A329E40A4E00479126 /* blueprint_style.json */,
 			);
 			path = "Sample Data";
-			sourceTree = "<group>";
-		};
-		74F141A729ED6D9A003F8C79 /* Alert */ = {
-			isa = PBXGroup;
-			children = (
-				74F141A829ED6DF9003F8C79 /* AlertView.swift */,
-				74F141AA29ED700D003F8C79 /* AlertViewController.swift */,
-			);
-			path = Alert;
-			sourceTree = "<group>";
-		};
-		74F141AC29ED724A003F8C79 /* MapSelect */ = {
-			isa = PBXGroup;
-			children = (
-				74F6BDFE29E58F9600A86EC5 /* MapSelectViewController.swift */,
-				74F141AD29ED72FE003F8C79 /* MapSelectView.swift */,
-				74954A0B29F2AC4000805E22 /* ModalViewWrapper.swift */,
-				74954A0D29F2AE0100805E22 /* MapSelectModal.swift */,
-				74906C1B29F6751800953D57 /* BasicViewController.swift */,
-			);
-			path = MapSelect;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,25 +382,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7417E2C42A6FA6A70080E0D9 /* AppControl.swift in Sources */,
-				74954A0E29F2AE0100805E22 /* MapSelectModal.swift in Sources */,
 				74E9D9E929DCF2C2006706F8 /* MapViewWrapper.swift in Sources */,
-				74DBEEC529E6E7E700BC968B /* MapSelectProtocol.swift in Sources */,
-				74954A0C29F2AC4000805E22 /* ModalViewWrapper.swift in Sources */,
 				7417E2BF2A6F91CC0080E0D9 /* TabTeamView.swift in Sources */,
-				74F6BDFF29E58F9600A86EC5 /* MapSelectViewController.swift in Sources */,
-				74906C1C29F6751800953D57 /* BasicViewController.swift in Sources */,
-				74969D4029DDA8E100C7C8CB /* ExampleProtocol.swift in Sources */,
-				74F141AB29ED700D003F8C79 /* AlertViewController.swift in Sources */,
+				74C6E67D2A831265008A6218 /* TabMypageView.swift in Sources */,
 				74062B3C29DC0BED00546886 /* ContentView.swift in Sources */,
 				74B71FA729F27DD000691BE0 /* TabMapView.swift in Sources */,
-				74F141A929ED6DF9003F8C79 /* AlertView.swift in Sources */,
-				742A713E29F019770074FCAE /* MainViewComponents.swift in Sources */,
 				7417E2C12A6F96800080E0D9 /* TabLogView.swift in Sources */,
 				74E9D9EB29DCF313006706F8 /* ViewController.swift in Sources */,
 				747E91172A81F10A0022FAA9 /* MapModel.swift in Sources */,
 				74062B3A29DC0BED00546886 /* mapbox_testApp.swift in Sources */,
-				742A714029F0BB850074FCAE /* MapButtonProtocol.swift in Sources */,
-				74F141AE29ED72FE003F8C79 /* MapSelectView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

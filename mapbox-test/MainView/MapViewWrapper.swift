@@ -15,6 +15,11 @@ struct MapViewWrapper : UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: ViewController, context: Context) {
+        // マップスタイル変更
         uiViewController.mapStyle = mapModel.mapStyle
+        // ユーザ位置をカメラのセンターへ
+        if(mapModel.isSetCameraCenter) {
+            uiViewController.setUserLocation()
+        }
     }
 }

@@ -64,12 +64,15 @@ struct TabMapView: View {
                             .foregroundColor(.white)
                             .clipShape(Circle())
                     }
+                    // モーダルを表示
                     .sheet(isPresented: $isModal, content: {
                         Picker(selection: $selectedValue, label: Text("")) {
+                            // Pickerの選択肢を準備
                             ForEach(Style.allCases, id: \.self){ item in
                                 Text(item.name).tag(item.rawValue)
                             }
                         }
+                        // Pickerの値が変更されたら処理する
                         .onChange(of: selectedValue, perform: { tag in
                             let style = Style(rawValue: tag) ?? .light
                             mapModel.mapStyle = style.uri
@@ -82,7 +85,7 @@ struct TabMapView: View {
                         Spacer()
                     })
                     Button(action: {
-                        
+                        mapModel.isSetCameraCenter = true
                     }){
                         Image(systemName: "location.fill")
                             .frame(width: 50, height: 50)
@@ -94,7 +97,7 @@ struct TabMapView: View {
                     Spacer()
                 }
                 .padding(.trailing, 14)
-                .padding(.top, 200)
+                .padding(.top, 50)
             }
         }
         

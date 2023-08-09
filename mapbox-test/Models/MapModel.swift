@@ -10,4 +10,5 @@ import MapboxMaps
 class MapModel: ObservableObject {
     
     @Published var mapStyle: StyleURI = .satelliteStreets
+    @Published var isSetCameraCenter: Bool = false
 }
